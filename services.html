@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Viva Bella Spa</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="cart" onclick="window.location.href='cart.html'">🛒</div>
+    <div class="logo-title">
+      <img src="Capture.JPG" alt="Logo">
+      <span class="title-text">Viva Bella Spa – Riyadh</span>
+    </div>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="services">
+  <h1>Our Services</h1>
+  <div class="tabs">
+    <button class="tab active" onclick="showCategory('nails', this)">Nails</button>
+    <button class="tab" onclick="showCategory('hair', this)">Hair</button>
+    <button class="tab" onclick="showCategory('packages', this)">Packages</button>
+  </div>
+
+  <div id="nails" class="category active">
+    <ul>
+      <li>Classic Manicure – 150 SAR 
+        <button onclick="addToCart('Classic Manicure',150)">Add</button>
+      </li>
+      <li>Spa Manicure – 365 SAR 
+        <button onclick="addToCart('Spa Manicure',365)">Add</button>
+      </li>
+      <li>Gel Removal – 150 SAR 
+        <button onclick="addToCart('Gel Removal',150)">Add</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="hair" class="category">
+    <ul>
+      <li>Blow Dry – 85 SAR 
+        <button onclick="addToCart('Blow Dry',85)">Add</button>
+      </li>
+      <li>Hair Treatment – 200 SAR 
+        <button onclick="addToCart('Hair Treatment',200)">Add</button>
+      </li>
+      <li>Haircut – 50 SAR 
+        <button onclick="addToCart('Haircut',50)">Add</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="packages" class="category">
+    <ul>
+      <li>Birthday Package – 250 SAR 
+        <button onclick="addToCart('Birthday Package',250)">Add</button>
+      </li>
+      <li>Bridal Package – 445 SAR 
+        <button onclick="addToCart('Bridal Package',445)">Add</button>
+      </li>
+      <li>Mama Glow Package – 330 SAR 
+        <button onclick="addToCart('Mama Glow Package',330)">Add</button>
+      </li>
+    </ul>
+  </div>
+</section>
+
+  <footer>
+    <p>© 2025 Viva Bella Spa | Riyadh</p>
+    <img src="Capture.JPG" alt="Logo">
+  </footer>
+
+  <script>
+    function showCategory(id, btn) {
+      document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+

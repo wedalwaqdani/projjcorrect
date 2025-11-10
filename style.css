@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  --offwhite: #f8f6f4;
+  --softpink: #f5d6d6;
+  --black: #222;
+  --accent: #d4a1a1;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--offwhite);
+  color: var(--black);
+  line-height: 1.6;
+}
+
+.main-header {
+  background-color: var(--offwhite);
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-header .logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--softpink);
+}
+
+.title-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--black);
+  margin: 0 15px;
+  font-weight: 400;
+  position: relative;
+  transition: var(--transition);
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent);
+  transition: var(--transition);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+.cart {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cart:hover {
+  transform: scale(1.1);
+}
+
+.hero-section {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+#heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(65%);
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.overlay button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: var(--transition);
+}
+
+.overlay button:hover {
+  background-color: var(--softpink);
+  color: var(--black);
+}
+
+.about {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.about h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.values {
+  margin-top: 40px;
+}
+
+.values ul {
+  list-style: none;
+  display: inline-block;
+  text-align: left;
+}
+
+.values li {
+  background: var(--softpink);
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 15px;
+  transition: var(--transition);
+}
+
+.values li:hover {
+  transform: translateX(5px);
+}
+
+.quote {
+  margin-top: 50px;
+  font-style: italic;
+  color: var(--accent);
+  font-family: 'Playfair Display', serif;
+}
+
+.services {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.services h1 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  margin-bottom: 30px;
+}
+
+.tab {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--black);
+  padding: 10px 25px;
+  margin: 5px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.tab.active,
+.tab:hover {
+  background-color: var(--accent);
+  color: white;
+}
+
+.category {
+  display: none;
+}
+
+.category.active {
+  display: block;
+}
+
+.category ul {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.category li {
+  background-color: white;
+  margin: 10px auto;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 15px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category button:hover {
+  background-color: var(--softpink);
+  color: var(--black);
+}
+
+.contact {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.contact form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+.contact form label {
+  display: block;
+  text-align: left;
+  margin: 15px 0 5px;
+  font-weight: 500;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: var(--transition);
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact button {
+  margin-top: 20px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.contact button:hover {
+  background-color: var(--softpink);
+  color: var(--black);
+}
+
+.info p {
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: var(--offwhite);
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-title img {
+  width: 90px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.title-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #000;
+  font-weight: 400;
+}
+
+.cart-page {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 40px;
+  border: 2px solid #000;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-page h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cart-item p {
+  margin: 5px 0;
+}
+
+.cart-item small {
+  display: block;
+  font-size: 13px;
+  color: #555;
+}
+
+#subtotal, #vat, #total {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+input, select {
+  border: 1px solid #000;
+  padding: 8px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+button {
+  background-color: #000;
+  color: white;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: #000;
+}
