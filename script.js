@@ -1,15 +1,44 @@
 function addToCart(name, price) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  let cartString = localStorage.getItem("cart");
+  let cart = [];
+
+  if (cartString) {
+    let items = cartString.split("|");
+    for (let i = 0; i < items.length; i++) {
+      let parts = items[i].split(",");
+      cart.push({ name: parts[0], price: Number(parts[1]) });
+    }
+  } else {
+    cart = [];
+  }
   cart.push({ name, price });
-  localStorage.setItem('cart', JSON.stringify(cart));
-  alert(`${name} added to your cart!`);
+
+  let newString = "";
+  for (let i = 0; i < cart.length; i++) {
+    newString += cart[i].name + "," + cart[i].price;
+    if (i < cart.length - 1) newString += "|";
+  }
+  localStorage.setItem("cart", newString);
+
+  alert(name + " added to your cart!");
 }
 
 function loadCart() {
   const container = document.getElementById('cartItems');
   if (!container) return;
 
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cartString = localStorage.getItem("cart");
+  let cart = [];
+
+  if (cartString && cartString.length > 0) {
+    let items = cartString.split("|");
+    for (let i = 0; i < items.length; i++) {
+      let parts = items[i].split(",");
+      cart.push({ name: parts[0], price: Number(parts[1]) });
+    }
+  }
+
   if (cart.length === 0) {
     container.innerHTML = "<p>Your cart is empty.</p>";
     document.getElementById('subtotal').textContent = "";
@@ -18,52 +47,77 @@ function loadCart() {
     return;
   }
 
-  container.innerHTML = cart.map((i, index) => 
+  // عرض العناصر
+  container.innerHTML = cart.map((item, index) =>
     `<div class="cart-item">
-      <p><strong>${i.name}</strong> – ${i.price} SAR 
+      <p><strong>${item.name}</strong> – ${item.price} SAR 
       <button class="remove" onclick="removeItem(${index})">❌</button></p>
     </div>`
   ).join('');
 
-  const subtotal = cart.reduce((sum, i) => sum + i.price, 0);
-  const vat = subtotal * 0.15;
-  const total = subtotal + vat;
+  let subtotal = 0;
+  for (let i = 0; i < cart.length; i++) {
+    subtotal += cart[i].price;
+  }
 
-  document.getElementById('subtotal').textContent = `Subtotal: ${subtotal.toFixed(2)} SAR`;
-  document.getElementById('vat').textContent = `VAT (15%): ${vat.toFixed(2)} SAR`;
-  document.getElementById('total').textContent = `Total: ${total.toFixed(2)} SAR`;
+  let vat = subtotal * 0.15;
+  let total = subtotal + vat;
+
+  document.getElementById('subtotal').textContent = "Subtotal: " + subtotal.toFixed(2) + " SAR";
+  document.getElementById('vat').textContent = "VAT (15%): " + vat.toFixed(2) + " SAR";
+  document.getElementById('total').textContent = "Total: " + total.toFixed(2) + " SAR";
 }
 
 function removeItem(index) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cartString = localStorage.getItem("cart");
+  let cart = [];
+
+  if (cartString) {
+    let items = cartString.split("|");
+    for (let i = 0; i < items.length; i++) {
+      let parts = items[i].split(",");
+      cart.push({ name: parts[0], price: Number(parts[1]) });
+    }
+  }
+
   cart.splice(index, 1);
-  localStorage.setItem('cart', JSON.stringify(cart));
+
+  let newString = "";
+  for (let i = 0; i < cart.length; i++) {
+    newString += cart[i].name + "," + cart[i].price;
+    if (i < cart.length - 1) newString += "|";
+  }
+
+  localStorage.setItem("cart", newString);
+
   loadCart();
 }
 
 function confirmBooking() {
   const date = document.getElementById('date').value;
   const payment = document.getElementById('payment').value;
+
   if (!date) {
     alert('Please select a date.');
     return;
   }
-  alert(`Booking confirmed for ${date}\nPayment: ${payment}`);
-  localStorage.removeItem('cart');
-  window.location.href = 'index.html';
+
+  alert("Booking confirmed for " + date + "\nPayment: " + payment);
+
+  localStorage.removeItem("cart");
+
+  window.location.href = "index.html";
 }
 
 function toggleCardForm() {
   const payment = document.getElementById('payment').value;
   const cardForm = document.getElementById('cardForm');
 
-  if (payment === 'Card') {
-    cardForm.style.display = 'block'; 
+  if (payment === "Card") {
+    cardForm.style.display = "block";
   } else {
-    cardForm.style.display = 'none'; 
+    cardForm.style.display = "none";
   }
 }
-
-
 
 window.onload = loadCart;
