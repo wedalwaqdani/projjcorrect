@@ -398,3 +398,33 @@ button:hover {
   background-color: white;
   color: #000;
 }
+.dev img {
+  width: 120px;        
+  height: 120px;
+  border-radius: 50%;  
+  object-fit: cover;   
+  border: 3px solid var(--accent); 
+  margin: 0 auto;      
+  display: block;
+}
+.dev {
+  text-align: center;
+}
+.dev-cards {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 40px;
+}
+.developers {
+  text-align: center;
+  width: 100%;
+  margin: 50px auto;
+}
+.developers h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
